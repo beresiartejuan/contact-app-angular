@@ -1,0 +1,7 @@
+.persons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 80vw !important;
+    gap: 2vw;
+}

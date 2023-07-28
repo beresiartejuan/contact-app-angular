@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
+import { MatIconModule } from "@angular/material/icon"
 
 import { AppRoutingModule } from './app-routing.module';
 import { UserCardComponent } from './components/user-card/user-card.component';
@@ -11,10 +12,10 @@ import { NewUserComponent } from './pages/new-user/new-user.component';
 import { EditUserComponent } from './pages/edit-user/edit-user.component';
 
 const routes: Routes = [
-  { path: "/home", component: HomeComponent },
-  { path: "", redirectTo: "/home" },
-  { path: "/user/*", component: InfoUserComponent },
-  { path: "/new-user", component: NewUserComponent },
+  { path: "home", component: HomeComponent },
+  { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: "user/*", component: InfoUserComponent },
+  { path: "new-user", component: NewUserComponent },
   { path: "edit/*", component: EditUserComponent }
 ];
 
@@ -28,6 +29,7 @@ const routes: Routes = [
     EditUserComponent,
   ],
   imports: [
+    MatIconModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(routes)
