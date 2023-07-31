@@ -1,14 +1,4 @@
-<nav class="navbar">
-    <div class="icon">
-        <h1>Contacts</h1>
-    </div>
-    <ul class="menu">
-        <li class="item">Home</li>
-        <li class="item"><mat-icon>person_add</mat-icon> Crear usuario</li>
-    </ul>
-</nav>
-
 <section class="persons">
-    <user-card *ngFor="let person of persons" name="{{ person.first_name + ' ' + person.last_name }}"
-        image="{{ person.image }}"></user-card>
+    <user-card *ngFor="let person of persons" [person]="person"></user-card>
+    <span *ngIf="!persons">No tienes contactos</span>
 </section>

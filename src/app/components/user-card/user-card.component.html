@@ -1,10 +1,10 @@
-<div class="card" style="width: 15rem;">
+<div class="card" style="width: 14rem; max-width: 14rem; min-width: 14rem;">
     <img class="card-img-top" src="{{image}}" alt="Card image cap">
     <div class="card-body" style="text-align:center;">
         <h5 class="card-title">{{ name }}</h5>
     </div>
     <div class="card-body" style="text-align:center; padding: .5rem 0;">
-        <a href="#" style="margin: 0 .5vw"><mat-icon>search</mat-icon></a>
+        <a [routerLink]="'/user/' + id" style="margin: 0 .5vw"><mat-icon>search</mat-icon></a>
         <a href="#" style="margin: 0 .5vw"><mat-icon>refresh</mat-icon></a>
         <a href="#" style="margin: 0 .5vw"><mat-icon>delete</mat-icon></a>
     </div>

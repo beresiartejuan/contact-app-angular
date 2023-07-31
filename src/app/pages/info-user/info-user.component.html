@@ -1,1 +1,24 @@
-<p>info-user works!</p>
+<div class="container" *ngIf="person">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="card-body p-4">
+            <div class="d-flex text-black">
+                <div class="flex-shrink-0">
+                    <img src="{{ person.image }}" alt="Foto de perfil del usuario" class="img-fluid"
+                        style="width: 180px; border-radius: 10px;">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                    <h3 class="mb-2">{{ person.first_name + " " + person.last_name }}</h3>
+                    <p class="mb-0 pb-0" style="color: #2b2a2a;"><b>Email:</b> {{ person.email }}</p>
+                    <p class="" style="color: #2b2a2a;"><b>Username:</b> {{ person.username }}</p>
+                    <div class="d-flex">
+                        <button type="button" class="btn btn-outline-primary me-1 flex-grow-1">Actualizar</button>
+                        <button type="button" class="btn btn-danger flex-grow-1">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container pt-5" *ngIf="!person">
+    <h3>Usuario no encontrado</h3>
+</div>

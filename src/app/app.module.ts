@@ -10,23 +10,27 @@ import { InfoUserComponent } from './pages/info-user/info-user.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NewUserComponent } from './pages/new-user/new-user.component';
 import { EditUserComponent } from './pages/edit-user/edit-user.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "", redirectTo: "home", pathMatch: "full" },
-  { path: "user/*", component: InfoUserComponent },
+  { path: "user/:id", component: InfoUserComponent },
   { path: "new-user", component: NewUserComponent },
-  { path: "edit/*", component: EditUserComponent }
+  { path: "user/:id/edit", component: EditUserComponent }
 ];
 
 @NgModule({
   declarations: [
+    AppComponent,
     UserCardComponent,
     UserFormComponent,
     InfoUserComponent,
     HomeComponent,
     NewUserComponent,
     EditUserComponent,
+    NavbarComponent,
   ],
   imports: [
     MatIconModule,
@@ -34,7 +38,8 @@ const routes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(routes)
   ],
+  exports: [RouterModule],
   providers: [],
-  bootstrap: [HomeComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
