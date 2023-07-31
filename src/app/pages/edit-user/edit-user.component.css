@@ -1,0 +1,17 @@
+form {
+    min-width: 30vw;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    padding: .7rem 1.2rem;
+    margin: .5vh 0 1vh 0;
+}
+
+form button {
+    padding: .7rem 1.2rem;
+    width: 60%;
+    margin: 0 20%;
+    margin-top: 1vh;
+}

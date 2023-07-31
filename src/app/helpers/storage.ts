@@ -10,6 +10,64 @@ export interface ResponseApi {
     results: Person[]
 }
 
+// ! TERMINAR ESTA PARTE 
+// export function updateContact(_id: string) {
+
+//     return new Promise((resolve, reject) => {
+
+//         globalThis.fetch(`https://peticiones.online/api/users/${_id}`, {
+//             method: "PUT",
+//             headers: {
+//                 'Accept': 'application/json',
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify(contact)
+//         });
+
+//     });
+
+// }
+
+export function addContact(contact: Omit<Person, '_id' | 'id' | 'image'>): Promise<Person> {
+
+    return new Promise((resolve, reject) => {
+
+        globalThis.fetch("https://peticiones.online/api/users", {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(contact)
+        }).then(response => {
+
+            if (!response.ok) {
+                console.error("No se pudo guardar el contacto");
+                reject("No se pudo crear el contacto");
+                return;
+            }
+
+            response.json().then((data: {
+                id: number,
+                first_name: string,
+                last_name: string,
+                email: string,
+                username: string,
+                image: string
+            }) => {
+
+                resolve({
+                    ...data,
+                    password: contact.password,
+                    _id: Math.random().toString(30).substring(2)
+                });
+
+            });
+
+        });
+    });
+}
+
 export function setContacts(contacts: Person[]) {
 
     try {

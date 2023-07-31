@@ -12,12 +12,13 @@ import { NewUserComponent } from './pages/new-user/new-user.component';
 import { EditUserComponent } from './pages/edit-user/edit-user.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "user/:id", component: InfoUserComponent },
-  { path: "new-user", component: NewUserComponent },
+  { path: "new-user", component: EditUserComponent },
   { path: "user/:id/edit", component: EditUserComponent }
 ];
 
@@ -36,7 +37,9 @@ const routes: Routes = [
     MatIconModule,
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [RouterModule],
   providers: [],
