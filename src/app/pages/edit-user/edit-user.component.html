@@ -36,5 +36,6 @@
     <div class="alert alert-danger" role="alert" *ngIf="is_success === false">
         El contacto no ha sido registrado
     </div>
-    <button type="submit" class="btn btn-primary">Agregar contacto</button>
+    <button *ngIf="!is_edit" type="submit" class="btn btn-primary">Agregar contacto</button>
+    <button *ngIf="is_edit" type="submit" class="btn btn-primary">Editar contacto</button>
 </form>

@@ -11,8 +11,9 @@
                     <p class="mb-0 pb-0" style="color: #2b2a2a;"><b>Email:</b> {{ person.email }}</p>
                     <p class="" style="color: #2b2a2a;"><b>Username:</b> {{ person.username }}</p>
                     <div class="d-flex">
-                        <button type="button" class="btn btn-outline-primary me-1 flex-grow-1">Actualizar</button>
-                        <button type="button" class="btn btn-danger flex-grow-1">Eliminar</button>
+                        <button [routerLink]="'/user/' + person._id + '/edit'" type="button"
+                            class="btn btn-outline-primary me-1 flex-grow-1">Actualizar</button>
+                        <button (click)="eliminar()" type="button" class="btn btn-danger flex-grow-1">Eliminar</button>
                     </div>
                 </div>
             </div>

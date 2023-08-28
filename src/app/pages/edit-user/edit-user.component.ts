@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { getContact, addContact, setContacts, getContacts } from 'src/app/helpers/storage';
+import { getContact, addContact, setContacts, getContacts, updateContact } from 'src/app/helpers/storage';
 import Person from 'src/app/types/Person';
 
 @Component({
@@ -34,7 +34,39 @@ export class EditUserComponent implements OnInit {
 
   editContact() {
 
+    if (!this.ref_contact) return;
 
+    const form = this.user_form.value;
+
+    if (typeof form.first_name === "string") {
+      if (form.first_name !== this.ref_contact.first_name) this.ref_contact.first_name = form.first_name;
+    }
+
+    if (typeof form.last_name === "string") {
+      if (form.last_name !== this.ref_contact.last_name) this.ref_contact.last_name = form.last_name;
+    }
+
+    if (typeof form.username === "string") {
+      if (form.username !== this.ref_contact.username) this.ref_contact.username = form.username;
+    }
+
+    if (typeof form.email === "string") {
+      if (form.email !== this.ref_contact.email) this.ref_contact.email = form.email;
+    }
+
+    if (typeof form.image === "string") {
+      if (form.image !== this.ref_contact.image) this.ref_contact.image = form.image;
+    }
+
+    if (typeof form.password === "string") {
+      if (form.password !== this.ref_contact.password) this.ref_contact.password = form.password;
+    }
+
+    updateContact(this.ref_contact).then(result => {
+
+      this.is_success = result;
+
+    });
 
   }
 

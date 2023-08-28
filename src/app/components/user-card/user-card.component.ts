@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { deleteContact } from 'src/app/helpers/storage';
 import Person from 'src/app/types/Person';
 
 @Component({
@@ -21,5 +22,13 @@ export class UserCardComponent implements OnInit {
     if (this.name.length > 15) {
       this.name = this.name.slice(0, 15) + "...";
     }
+  }
+
+  eliminar() {
+
+    deleteContact(this.person._id).then(result => {
+      if (result) location.reload();
+    });
+
   }
 }

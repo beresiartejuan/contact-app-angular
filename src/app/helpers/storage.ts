@@ -10,23 +10,47 @@ export interface ResponseApi {
     results: Person[]
 }
 
-// ! TERMINAR ESTA PARTE 
-// export function updateContact(_id: string) {
+export function updateContact(contact: Person): Promise<boolean> {
 
-//     return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
 
-//         globalThis.fetch(`https://peticiones.online/api/users/${_id}`, {
-//             method: "PUT",
-//             headers: {
-//                 'Accept': 'application/json',
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify(contact)
-//         });
+        deleteContact(contact._id).then(result => {
 
-//     });
+            if (!result) {
+                resolve(false);
+                return;
+            };
 
-// }
+            getContacts().then(all_contacts => {
+
+                setContacts([contact, ...all_contacts]);
+
+                resolve(true);
+
+            });
+
+        });
+
+    });
+}
+
+export function deleteContact(_id: string): Promise<boolean> {
+
+    return new Promise((resolve, reject) => {
+
+        getContacts().then(contacts => {
+
+            const filtered_contacts = contacts.filter(c => c._id !== _id);
+
+            setContacts(filtered_contacts);
+
+            resolve(true);
+
+        });
+
+    });
+
+}
 
 export function addContact(contact: Omit<Person, '_id' | 'id' | 'image'>): Promise<Person> {
 

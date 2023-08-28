@@ -5,7 +5,8 @@
     </div>
     <div class="card-body" style="text-align:center; padding: .5rem 0;">
         <a [routerLink]="'/user/' + id" style="margin: 0 .5vw"><mat-icon>search</mat-icon></a>
-        <a href="#" style="margin: 0 .5vw"><mat-icon>refresh</mat-icon></a>
-        <a href="#" style="margin: 0 .5vw"><mat-icon>delete</mat-icon></a>
+        <a [routerLink]="'/user/' + id + '/edit'" href="#" style="margin: 0 .5vw"><mat-icon>edit</mat-icon></a>
+        <a (click)="eliminar()"
+            style="margin: 0 .5vw; color: rgba(var(--bs-link-color-rgb),var(--bs-link-opacity,1)); cursor: pointer;"><mat-icon>delete</mat-icon></a>
     </div>
 </div>

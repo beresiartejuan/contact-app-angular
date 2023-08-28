@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import Person from 'src/app/types/Person';
-import { getContacts, setContacts, getContact } from "../../helpers/storage";
+import { getContacts, setContacts, getContact, deleteContact } from "../../helpers/storage";
 
 @Component({
   selector: 'app-info-user',
@@ -34,6 +34,14 @@ export class InfoUserComponent implements OnInit {
       });
 
     });
+  }
+
+  eliminar() {
+
+    deleteContact(this.person._id).then(result => {
+      if (result) location.pathname = "/";
+    });
+
   }
 
 }
